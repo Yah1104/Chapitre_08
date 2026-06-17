@@ -22,4 +22,13 @@ public class bookShelfSpec {
         assertEquals(2, books.size(), () -> "BookShelf should have two books.");
     }
 
+    @Test
+    public void emptyBookShelfWhenAddIsCalledWithoutBooks() {
+        BookShelf shelf = new BookShelf();
+        shelf.add(); // Appel sans aucun argument (vararg vide)
+        List<String> books = shelf.books();
+        assertTrue(books.isEmpty(), () -> "BookShelf should be empty.");
+    }
+
+
 }
