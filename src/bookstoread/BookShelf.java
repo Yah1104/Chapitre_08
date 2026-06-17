@@ -1,6 +1,7 @@
 package bookstoread;
 import java.time.Year;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class BookShelf {
@@ -27,7 +28,13 @@ public class BookShelf {
         return books.stream().sorted(criteria).collect(Collectors.toList());
     }
 
+    // Utilisation de la méthode générique pour éviter la duplication
     public Map<Year, List<Book>> groupByPublicationYear() {
-        return books.stream().collect(Collectors.groupingBy(book -> Year.of(book.getPublishedOn().getYear())));
+        return this.groupBy(book -> Year.of(book.getPublishedOn().getYear()));
+    }
+
+    //  Regroupement générique basé sur une fonction fournie par le client
+    public <K> Map<K, List<Book>> groupBy(Function<Book, K> fx) {
+        return books.stream().collect(Collectors.groupingBy(fx));
     }
 }
