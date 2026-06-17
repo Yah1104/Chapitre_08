@@ -3,6 +3,7 @@ package bookstoread;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -71,4 +72,16 @@ public class BookShelfSpec {
         assertEquals(Arrays.asList(effectiveJava, codeComplete, mythicalManMonth), books,
                 () -> "Books in bookshelf are in insertion order");
     }
+
+    @Test
+    void bookshelfArrangedByUserProvidedCriteria() {
+        shelf.add(effectiveJava, codeComplete, mythicalManMonth);
+        // Tri ordre alphabétique inverse (Z à A)
+        List<Book> books = shelf.arrange(Comparator.<Book>naturalOrder().reversed());
+
+        // L'ordre inverse attendu est : The Mythical Man-Month, Effective Java, Code Complete
+        assertEquals(Arrays.asList(mythicalManMonth, effectiveJava, codeComplete), books,
+                () -> "Books in a bookshelf are arranged in descending order of book title");
+    }
+
 }

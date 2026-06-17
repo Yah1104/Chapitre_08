@@ -12,7 +12,7 @@ public class BookShelf {
     }
 
 
-    // Refactoring : Utilisation d'une méthode avec un vararg
+    // Utilisation d'une méthode avec un vararg
     public void add(Book... booksToAdd) {
         books.addAll(Arrays.asList(booksToAdd));
     }
@@ -20,5 +20,9 @@ public class BookShelf {
     // Ajout de la méthode pour la compilation
     public List<Book> arrange() {
         return books.stream().sorted().collect(Collectors.toList());
+    }
+
+    public List<Book> arrange(Comparator<Book> criteria) {
+        return books.stream().sorted(criteria).collect(Collectors.toList());
     }
 }
