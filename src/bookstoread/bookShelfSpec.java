@@ -1,5 +1,6 @@
 package bookstoread;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -54,5 +55,15 @@ public class bookShelfSpec {
             assertTrue(e instanceof UnsupportedOperationException, () -> "Should throw UnsupportedOperationException.");
         }
     }
+
+    @Test
+    void bookshelfArrangedByBookTitle() {
+        shelf.add("Effective Java", "Code Complete", "The Mythical Man-Month");
+        List<String> books = shelf.arrange();
+        // Utilisation de Arrays.asList pour comparer les listes triées
+        assertEquals(Arrays.asList("Code Complete", "Effective Java", "The Mythical Man-Month"), books,
+                () -> "Books in a bookshelf should be arranged lexicographically by book title");
+    }
+
 
 }

@@ -1,8 +1,5 @@
 package bookstoread;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class BookShelf {
     // Création de la variable d'instance pour stocker les livres
@@ -17,5 +14,11 @@ public class BookShelf {
     // Refactoring : Utilisation d'une méthode avec un vararg
     public void add(String... booksToAdd) {
         books.addAll(Arrays.asList(booksToAdd));
+    }
+
+    // Ajout de la méthode pour la compilation (renvoie null au départ)
+    public List<String> arrange() {
+        books.sort(Comparator.naturalOrder());
+        return books;
     }
 }
