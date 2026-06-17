@@ -1,5 +1,6 @@
 package bookstoread;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class BookShelf {
     // Création de la variable d'instance pour stocker les livres
@@ -16,9 +17,8 @@ public class BookShelf {
         books.addAll(Arrays.asList(booksToAdd));
     }
 
-    // Ajout de la méthode pour la compilation (renvoie null au départ)
+    // Ajout de la méthode pour la compilation
     public List<String> arrange() {
-        books.sort(Comparator.naturalOrder());
-        return books;
+        return books.stream().sorted().collect(Collectors.toList());
     }
 }
