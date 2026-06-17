@@ -8,9 +8,9 @@ public class BookShelf {
     // Création de la variable d'instance pour stocker les livres
     private final List<String> books = new ArrayList<>();
 
-    // Modification de la méthode pour retourner la variable d'instance
+    // Modification pour retourner une vue immuable de la liste
     public List<String> books() {
-        return books;
+        return Collections.unmodifiableList(books);
     }
 
 
