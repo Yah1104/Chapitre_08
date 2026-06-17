@@ -19,7 +19,7 @@ public class BookShelf {
 
     // Ajout de la méthode pour la compilation
     public List<Book> arrange() {
-        return books.stream().sorted().collect(Collectors.toList());
+        return arrange(Comparator.naturalOrder());
     }
 
     public List<Book> arrange(Comparator<Book> criteria) {

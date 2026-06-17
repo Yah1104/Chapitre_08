@@ -84,4 +84,16 @@ public class BookShelfSpec {
                 () -> "Books in a bookshelf are arranged in descending order of book title");
     }
 
+    @Test
+    void bookshelfArrangedByPublishedDate() {
+        shelf.add(effectiveJava, codeComplete, mythicalManMonth);
+        // Tri par date de publication (du plus ancien au plus récent)
+        List<Book> books = shelf.arrange(Comparator.comparing(Book::getPublishedOn));
+
+        // Ordre attendu : Mythical Man-Month (1975), Code Complete (2004), Effective Java (2008)
+        assertEquals(Arrays.asList(mythicalManMonth, codeComplete, effectiveJava), books,
+                () -> "Books in a bookshelf should be arranged by publication date");
+    }
+
+
 }
